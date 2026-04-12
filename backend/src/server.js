@@ -12,6 +12,7 @@ import emailRoutes from './routes/emailRoutes.js';
 import assignmentRoutes from './routes/assignmentRoutes.js';
 import attendanceRoutes from './routes/attendanceRoutes.js';
 import studyPlanRoutes from './routes/studyPlanRoutes.js';
+import dashboardRoutes from './routes/dashboardRoutes.js';
 
 // Initialize MongoDB
 connectDB();
@@ -43,7 +44,7 @@ app.use('/api/emails', emailRoutes);
 app.use('/api/assignments', assignmentRoutes);
 app.use('/api/attendance', attendanceRoutes);
 app.use('/api/study-plan', studyPlanRoutes);
-// app.use('/api/dashboard', dashboardRoutes);
+app.use('/api/dashboard', dashboardRoutes);
 
 const PORT = process.env.PORT || 5000;
 
