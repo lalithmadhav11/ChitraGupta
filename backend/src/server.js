@@ -10,6 +10,7 @@ import connectDB from './config/db.js';
 import authRoutes from './routes/authRoutes.js';
 import emailRoutes from './routes/emailRoutes.js';
 import assignmentRoutes from './routes/assignmentRoutes.js';
+import attendanceRoutes from './routes/attendanceRoutes.js';
 
 // Initialize MongoDB
 connectDB();
@@ -39,7 +40,7 @@ app.use(passport.session());
 app.use('/api/auth', authRoutes);
 app.use('/api/emails', emailRoutes);
 app.use('/api/assignments', assignmentRoutes);
-// app.use('/api/attendance', attendanceRoutes);
+app.use('/api/attendance', attendanceRoutes);
 // app.use('/api/study-plan', studyPlanRoutes);
 // app.use('/api/dashboard', dashboardRoutes);
 
