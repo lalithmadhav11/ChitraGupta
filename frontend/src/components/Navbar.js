@@ -3,60 +3,68 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useAuth } from '../lib/AuthContext';
 
+const links = [
+  { href: '/dashboard', label: 'Dashboard', icon: '📊' },
+  { href: '/emails', label: 'Emails', icon: '📧' },
+  { href: '/assignments', label: 'Assignments', icon: '📚' },
+  { href: '/attendance', label: 'Attendance', icon: '📅' },
+  { href: '/study-plan', label: 'Study Plan', icon: '🎯' },
+];
+
 export default function Navbar() {
   const pathname = usePathname();
   const { user, logout } = useAuth();
 
-  if (pathname === '/login') return null;
-
-  const links = [
-    { href: '/dashboard', label: '📊 Dashboard' },
-    { href: '/emails', label: '📧 Emails' },
-    { href: '/assignments', label: '📝 Assignments' },
-    { href: '/attendance', label: '📅 Attendance' },
-    { href: '/study-plan', label: '🧠 Study Plan' },
-  ];
-
   return (
-    <div className="w-64 bg-slate-800 h-screen flex flex-col border-r border-slate-700">
-      <div className="p-6">
-        <h1 className="text-2xl font-bold text-white">Chitraguptha</h1>
+    <aside className="fixed left-0 top-0 h-full w-64 bg-slate-800 border-r border-slate-700 flex flex-col z-50">
+      <div className="p-6 border-b border-slate-700">
+        <h1 className="text-xl font-bold text-purple-400">ChitraGupta</h1>
+        <p className="text-xs text-slate-500 mt-1">Academic Assistant</p>
       </div>
-      <nav className="flex-1 px-4 space-y-2">
-        {links.map(link => (
-          <Link 
-            key={link.href} 
-            href={link.href}
-            className={`block px-4 py-2 rounded-lg transition-colors ${
-              pathname === link.href 
-                ? 'bg-purple-500 text-white' 
-                : 'text-slate-300 hover:bg-slate-700 hover:text-white'
-            }`}
-          >
-            {link.label}
-          </Link>
-        ))}
+
+      <nav className="flex-1 p-4 space-y-1">
+        {links.map(link => {
+          const isActive = pathname === link.href;
+          return (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all text-sm font-medium ${
+                isActive
+                  ? 'bg-purple-600/20 text-purple-400 border-l-2 border-purple-500'
+                  : 'text-slate-400 hover:text-white hover:bg-slate-700'
+              }`}
+            >
+              <span>{link.icon}</span>
+              <span>{link.label}</span>
+            </Link>
+          );
+        })}
       </nav>
-      {user && (
-        <div className="p-4 border-t border-slate-700">
-          <div className="flex items-center space-x-3 mb-4">
-            {user.picture ? (
-              <img src={user.picture} alt="Profile" className="w-10 h-10 rounded-full" />
-            ) : (
-              <div className="w-10 h-10 rounded-full bg-slate-600"></div>
+
+      <div className="p-4 border-t border-slate-700">
+        {user && (
+          <div className="flex items-center gap-3 mb-3">
+            {user.picture && (
+              <img
+                src={user.picture}
+                alt={user.name}
+                className="w-8 h-8 rounded-full"
+              />
             )}
-            <div className="overflow-hidden">
+            <div className="flex-1 min-w-0">
               <p className="text-sm font-medium text-white truncate">{user.name}</p>
+              <p className="text-xs text-slate-500 truncate">{user.email}</p>
             </div>
           </div>
-          <button 
-            onClick={logout}
-            className="w-full px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-lg transition-colors text-sm font-medium"
-          >
-            Logout
-          </button>
-        </div>
-      )}
-    </div>
+        )}
+        <button
+          onClick={logout}
+          className="w-full px-4 py-2 text-sm text-red-400 hover:text-red-300 hover:bg-red-900/20 rounded-lg transition-all text-left"
+        >
+          🚪 Logout
+        </button>
+      </div>
+    </aside>
   );
 }

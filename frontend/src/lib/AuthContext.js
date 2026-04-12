@@ -1,36 +1,23 @@
 'use client';
 import { createContext, useContext, useEffect, useState } from 'react';
-import { useRouter, usePathname } from 'next/navigation';
-import { getMe, logout as logoutApi } from './api';
+import { logout as logoutApi } from '../lib/api';
 
-const AuthContext = createContext(null);
+const AuthContext = createContext({ user: null, logout: () => {} });
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const router = useRouter();
-  const pathname = usePathname();
 
   useEffect(() => {
-    getMe()
-      .then(setUser)
-      .catch(() => {
-        if (pathname !== '/login') {
-          router.push('/login');
-        }
-      })
-      .finally(() => setLoading(false));
-  }, [pathname, router]);
+    fetch('http://localhost:5000/api/auth/me', { credentials: 'include' })
+      .then(res => res.ok ? res.json() : null)
+      .then(data => { if (data) setUser(data); })
+      .catch(() => {});
+  }, []);
 
   const logout = async () => {
-    await logoutApi();
-    setUser(null);
-    router.push('/login');
+    try { await logoutApi(); } catch (e) {}
+    window.location.href = '/login';
   };
-
-  if (loading) return <div className="min-h-screen bg-slate-900 flex items-center justify-center w-full">
-    <div className="text-white text-xl animate-pulse">Loading...</div>
-  </div>;
 
   return (
     <AuthContext.Provider value={{ user, logout }}>
