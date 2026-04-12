@@ -7,6 +7,7 @@ import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import passport from 'passport';
 import connectDB from './config/db.js';
+import authRoutes from './routes/authRoutes.js';
 
 // Initialize MongoDB
 connectDB();
@@ -33,7 +34,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Routes (Placeholders to be replaced in subsequent features)
-// app.use('/api/auth', authRoutes);
+app.use('/api/auth', authRoutes);
 // app.use('/api/emails', emailRoutes);
 // app.use('/api/assignments', assignmentRoutes);
 // app.use('/api/attendance', attendanceRoutes);
