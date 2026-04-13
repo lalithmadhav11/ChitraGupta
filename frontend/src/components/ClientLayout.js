@@ -1,6 +1,6 @@
 'use client';
 import { usePathname } from 'next/navigation';
-import Navbar from './Navbar';
+import Sidebar from './Sidebar';
 
 export default function ClientLayout({ children }) {
   const pathname = usePathname();
@@ -9,9 +9,9 @@ export default function ClientLayout({ children }) {
   if (isLoginPage) return <>{children}</>;
 
   return (
-    <div className="flex min-h-screen bg-slate-900">
-      <Navbar />
-      <main className="flex-1 ml-64 p-8">
+    <div className="flex min-h-screen">
+      <Sidebar />
+      <main className="flex-1 max-w-[1200px] w-full mx-auto pt-16 pb-24 px-12">
         {children}
       </main>
     </div>

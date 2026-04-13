@@ -1,3 +1,70 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background text-onSurface font-inter antialiased;
+    background-color: theme('colors.background');
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-manrope text-onSurface tracking-tight;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-surfaceContainer/80 backdrop-blur-[20px];
+  }
+  .glass-card {
+    @apply bg-surfaceContainer border border-outlineVariant/15 shadow-[0_8px_40px_rgba(255,181,157,0.06)];
+  }
+  .ghost-border {
+    @apply border border-outlineVariant/15;
+  }
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-primaryContainer;
+  }
+  .btn-gradient {
+    @apply bg-gradient-to-br from-primary to-primaryContainer text-onPrimaryFixed shadow-[0_0_20px_rgba(255,181,157,0.2)];
+  }
+  .layout-padding {
+    @apply pt-12 px-6 lg:pt-16 lg:px-12 max-w-[1200px] mx-auto;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-surfaceContainerHighest rounded-full;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-surfaceBright;
+}
+
+.geometric-bg {
+    background-color: #0f0f0f;
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(201, 100, 66, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(201, 100, 66, 0.08) 0%, transparent 40%);
+    position: relative;
+    overflow: hidden;
+}
+.shape-circle {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(229, 226, 225, 0.05);
+}
+.shape-line {
+    position: absolute;
+    background: linear-gradient(90deg, transparent, rgba(201, 100, 66, 0.15), transparent);
+    height: 1px;
+    width: 100%;
+}

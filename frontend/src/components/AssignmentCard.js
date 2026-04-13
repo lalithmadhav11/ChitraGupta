@@ -1,44 +1,86 @@
 'use client';
 
 export default function AssignmentCard({ assignment }) {
-  const colors = {
-    critical: 'bg-red-500/20 text-red-500 border-red-500/30',
-    high: 'bg-orange-500/20 text-orange-400 border-orange-500/30',
-    medium: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30',
-    low: 'bg-green-500/20 text-green-400 border-green-500/30'
-  };
-
   const isOverdue = assignment.daysRemaining !== null && assignment.daysRemaining < 0;
 
+  const getStyle = () => {
+    if (isOverdue || assignment.urgency === 'critical') {
+      return {
+        wrapper: 'border-l-error hover:bg-[#201f1f]',
+        badgeBg: 'bg-errorContainer/20 text-error',
+        dot: 'bg-error',
+        urgencyLabel: isOverdue ? 'Overdue' : 'Critical',
+        icon: 'warning',
+        textHighlight: 'text-error'
+      };
+    }
+    switch (assignment.urgency) {
+      case 'high':
+        return {
+          wrapper: 'border-l-secondaryContainer hover:bg-[#201f1f]',
+          badgeBg: 'bg-secondaryContainer/20 text-secondary',
+          dot: 'bg-secondary',
+          urgencyLabel: 'High',
+          icon: 'alarm',
+          textHighlight: 'text-secondary'
+        };
+      case 'medium':
+        return {
+          wrapper: 'border-l-tertiaryContainer hover:bg-[#201f1f]',
+          badgeBg: 'bg-tertiaryContainer/20 text-tertiary',
+          dot: 'bg-tertiary',
+          urgencyLabel: 'Medium',
+          icon: 'event',
+          textHighlight: 'text-onSurfaceVariant'
+        };
+      case 'low':
+      default:
+        return {
+          wrapper: 'border-l-outlineVariant hover:bg-[#201f1f]',
+          badgeBg: 'bg-outlineVariant/20 text-outline',
+          dot: 'bg-outline',
+          urgencyLabel: 'Low',
+          icon: 'schedule',
+          textHighlight: 'text-onSurfaceVariant'
+        };
+    }
+  };
+
+  const style = getStyle();
+
   return (
-    <div className="bg-slate-800 border border-slate-700 rounded-xl p-5 flex flex-col hover:border-slate-500 transition-colors">
-      <div className="flex justify-between items-start mb-3">
-        <span className="text-xs font-semibold px-2 py-1 bg-slate-700 text-slate-300 rounded-md">
-          {assignment.type}
+    <div className={`bg-[#1a1a1a] rounded-2xl border border-[#2e2e2e] border-l-4 ${style.wrapper} p-6 flex flex-col gap-6 shadow-[0_0_20px_rgba(0,0,0,0.3)] transition-all group`}>
+      <div className="flex justify-between items-start">
+        <span className="px-3 py-1 rounded-full bg-surfaceContainerHighest text-[10px] font-bold font-inter uppercase tracking-widest text-onSurfaceVariant">
+          {assignment.courseName}
         </span>
-        <span className={`px-3 py-1 rounded-full text-xs font-semibold border ${colors[assignment.urgency]}`}>
-          {assignment.urgency.toUpperCase()}
+        <span className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg ${style.badgeBg} text-[10px] font-bold font-inter uppercase tracking-wider`}>
+          <span className={`w-1.5 h-1.5 rounded-full ${style.dot}`}></span>
+          {style.urgencyLabel}
         </span>
       </div>
       
-      <h3 className="text-xl font-bold text-white mb-1 line-clamp-2">{assignment.title}</h3>
-      <p className="text-sm text-slate-400 mb-4">{assignment.courseName}</p>
-      
-      <div className="mt-auto pt-4 border-t border-slate-700 flex justify-between items-center">
-        <div className="text-sm">
-          {assignment.dueDate ? (
-            <span className="text-slate-300">
-              Due: {new Date(assignment.dueDate).toLocaleDateString()}
-            </span>
-          ) : (
-            <span className="text-slate-500">No due date</span>
-          )}
+      <div className="space-y-1">
+        <h3 className="text-xl font-bold font-manrope text-onSurface group-hover:text-primary transition-colors line-clamp-2">
+          {assignment.title}
+        </h3>
+        <p className="text-[11px] font-inter font-medium text-tertiary uppercase tracking-widest">
+          {assignment.type || 'ASSIGNMENT'}
+        </p>
+      </div>
+
+      <div className="flex justify-between items-center pt-4 mt-auto">
+        <div className="flex items-center gap-2 text-onSurfaceVariant">
+          <span className="material-symbols-outlined text-[18px]" data-icon={style.icon}>{style.icon}</span>
+          <span className="text-xs font-medium">
+            {assignment.dueDate ? new Date(assignment.dueDate).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }) : 'No Due Date'}
+          </span>
         </div>
         
         {assignment.daysRemaining !== null && (
-          <div className={`font-bold text-sm ${isOverdue ? 'text-red-500' : 'text-slate-300'}`}>
-            {isOverdue ? 'Overdue' : `${assignment.daysRemaining} days left`}
-          </div>
+          <span className={`text-xs font-bold uppercase tracking-wider ${style.textHighlight}`}>
+            {isOverdue ? 'Overdue' : assignment.daysRemaining === 0 ? 'Due today' : `${assignment.daysRemaining} days left`}
+          </span>
         )}
       </div>
     </div>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login | Chitragupta</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed-dim": "#ffb59d",
+                    "on-secondary-container": "#e8aa97",
+                    "on-primary-fixed": "#390b00",
+                    "on-tertiary-fixed-variant": "#004f50",
+                    "surface": "#131313",
+                    "on-primary-container": "#521400",
+                    "on-secondary-fixed-variant": "#673b2d",
+                    "on-tertiary": "#003737",
+                    "inverse-on-surface": "#313030",
+                    "inverse-surface": "#e5e2e1",
+                    "on-surface-variant": "#dcc1b8",
+                    "surface-container": "#201f1f",
+                    "background": "#131313",
+                    "tertiary": "#6cd7d8",
+                    "secondary": "#f7b8a4",
+                    "error": "#ffb4ab",
+                    "on-background": "#e5e2e1",
+                    "surface-bright": "#3a3939",
+                    "primary-fixed": "#ffdbd0",
+                    "surface-container-high": "#2a2a2a",
+                    "secondary-fixed-dim": "#f7b8a4",
+                    "outline-variant": "#56423c",
+                    "surface-container-highest": "#353534",
+                    "outline": "#a48b84",
+                    "on-secondary": "#4d2618",
+                    "on-tertiary-fixed": "#002020",
+                    "surface-container-low": "#1c1b1b",
+                    "on-primary": "#5d1800",
+                    "secondary-fixed": "#ffdbd0",
+                    "on-secondary-fixed": "#331106",
+                    "on-primary-fixed-variant": "#7e2c0e",
+                    "on-tertiary-container": "#002f30",
+                    "error-container": "#93000a",
+                    "tertiary-fixed": "#89f4f4",
+                    "inverse-primary": "#9d4324",
+                    "on-surface": "#e5e2e1",
+                    "on-error": "#690005",
+                    "on-error-container": "#ffdad6",
+                    "primary-container": "#dc7350",
+                    "primary": "#ffb59d",
+                    "secondary-container": "#6a3d2f",
+                    "tertiary-container": "#28a0a1",
+                    "tertiary-fixed-dim": "#6cd7d8",
+                    "surface-tint": "#ffb59d",
+                    "surface-variant": "#353534",
+                    "surface-container-lowest": "#0e0e0e",
+                    "surface-dim": "#131313"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .geometric-bg {
+            background-color: #0f0f0f;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(201, 100, 66, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(201, 100, 66, 0.08) 0%, transparent 40%);
+            position: relative;
+            overflow: hidden;
+        }
+        .shape-circle {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(229, 226, 225, 0.05);
+        }
+        .shape-line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, rgba(201, 100, 66, 0.15), transparent);
+            height: 1px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-[#0f0f0f] font-body text-on-surface antialiased">
+<main class="min-h-screen flex flex-col md:flex-row">
+<!-- Left Side: Abstract Geometric & Quote -->
+<section class="hidden md:flex md:w-1/2 geometric-bg flex-col justify-center items-center p-12 relative">
+<!-- Pure CSS Geometric Patterns -->
+<div class="shape-circle w-96 h-96 -top-20 -left-20 border-[#C96442]/10"></div>
+<div class="shape-circle w-[500px] h-[500px] bottom-10 -right-40 opacity-20"></div>
+<div class="shape-line top-1/4 rotate-12"></div>
+<div class="shape-line top-2/3 -rotate-12 opacity-50"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full bg-[#C96442]/5 blur-3xl"></div>
+<div class="relative z-10 max-w-md text-center">
+<blockquote class="space-y-6">
+<p class="font-headline text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight text-on-surface">
+                        Knowledge is power. Organization is key.
+                    </p>
+<footer class="flex items-center justify-center gap-3">
+<span class="h-[1px] w-8 bg-[#C96442]"></span>
+<cite class="not-italic font-label uppercase tracking-widest text-xs text-primary">ChitraGupta</cite>
+</footer>
+</blockquote>
+</div>
+<!-- Bottom decorative element -->
+<div class="absolute bottom-12 left-12 flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<span class="text-[10px] font-label uppercase tracking-[0.2em] text-on-surface-variant/50">Academic Curator v2.0</span>
+</div>
+</section>
+<!-- Right Side: Login Card -->
+<section class="flex-1 flex items-center justify-center p-6 sm:p-12 bg-[#0f0f0f]">
+<div class="w-full max-w-[420px] space-y-10">
+<!-- Branding & Header -->
+<div class="text-center space-y-4">
+<div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-surface-container border border-outline-variant/10">
+<div class="w-3 h-3 rounded-full bg-primary"></div>
+</div>
+<div class="space-y-2">
+<h1 class="text-3xl font-semibold text-[#ebebeb] tracking-tight">Welcome back</h1>
+<p class="text-sm text-[#a0a0a0] font-body">Sign in to your academic assistant</p>
+</div>
+</div>
+<!-- Sign In Actions -->
+<div class="space-y-6">
+<div class="relative flex items-center py-2">
+<div class="flex-grow border-t border-outline-variant/10"></div>
+<span class="flex-shrink mx-4 text-[10px] font-label uppercase tracking-widest text-[#606060]">Continue with</span>
+<div class="flex-grow border-t border-outline-variant/10"></div>
+</div>
+<button class="w-full group flex items-center justify-center gap-3 px-6 py-4 bg-[#1a1a1a] border border-[#2e2e2e] rounded-xl hover:bg-[#222222] transition-all duration-200 active:scale-[0.98]">
+<svg class="w-5 h-5" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+</svg>
+<span class="text-sm font-medium text-[#ebebeb]">Continue with Google</span>
+</button>
+</div>
+<!-- Manual Login Fallback (Subtle) -->
+<div class="pt-4 text-center">
+<a class="text-xs text-on-surface-variant hover:text-primary transition-colors duration-200 underline underline-offset-4 decoration-outline-variant/30" href="#">
+                        Use institutional email instead
+                    </a>
+</div>
+<!-- Bottom Disclosure -->
+<div class="pt-8 border-t border-outline-variant/10">
+<p class="text-xs leading-relaxed text-[#606060] text-center max-w-[340px] mx-auto">
+                        By signing in, you grant access to your Gmail and Google Classroom data. This allows Chitragupta to curate your academic materials and sync your assignments automatically.
+                    </p>
+</div>
+<!-- Footer Links -->
+<footer class="flex items-center justify-center gap-6 pt-4">
+<a class="text-[10px] font-label uppercase tracking-widest text-[#606060] hover:text-[#a0a0a0] transition-colors" href="#">Privacy</a>
+<span class="w-1 h-1 rounded-full bg-outline-variant/30"></span>
+<a class="text-[10px] font-label uppercase tracking-widest text-[#606060] hover:text-[#a0a0a0] transition-colors" href="#">Terms</a>
+<span class="w-1 h-1 rounded-full bg-outline-variant/30"></span>
+<a class="text-[10px] font-label uppercase tracking-widest text-[#606060] hover:text-[#a0a0a0] transition-colors" href="#">Support</a>
+</footer>
+</div>
+</section>
+</main>
+<!-- Overlay Grain for Premium Texture -->
+<div class="fixed inset-0 pointer-events-none opacity-[0.03] mix-blend-overlay">
+<svg viewbox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+<filter id="noiseFilter">
+<feturbulence basefrequency="0.65" numoctaves="3" stitchtiles="stitch" type="fractalNoise"></feturbulence>
+</filter>
+<rect filter="url(#noiseFilter)" height="100%" width="100%"></rect>
+</svg>
+</div>
+</body></html>

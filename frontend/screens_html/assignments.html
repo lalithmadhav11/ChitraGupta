@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Assignments | Chitragupta</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#ffb59d",
+                        "on-secondary-container": "#e8aa97",
+                        "on-primary-fixed": "#390b00",
+                        "on-tertiary-fixed-variant": "#004f50",
+                        "surface": "#131313",
+                        "on-primary-container": "#521400",
+                        "on-secondary-fixed-variant": "#673b2d",
+                        "on-tertiary": "#003737",
+                        "inverse-on-surface": "#313030",
+                        "inverse-surface": "#e5e2e1",
+                        "on-surface-variant": "#dcc1b8",
+                        "surface-container": "#201f1f",
+                        "background": "#131313",
+                        "tertiary": "#6cd7d8",
+                        "secondary": "#f7b8a4",
+                        "error": "#ffb4ab",
+                        "on-background": "#e5e2e1",
+                        "surface-bright": "#3a3939",
+                        "primary-fixed": "#ffdbd0",
+                        "surface-container-high": "#2a2a2a",
+                        "secondary-fixed-dim": "#f7b8a4",
+                        "outline-variant": "#56423c",
+                        "surface-container-highest": "#353534",
+                        "outline": "#a48b84",
+                        "on-secondary": "#4d2618",
+                        "on-tertiary-fixed": "#002020",
+                        "surface-container-low": "#1c1b1b",
+                        "on-primary": "#5d1800",
+                        "secondary-fixed": "#ffdbd0",
+                        "on-secondary-fixed": "#331106",
+                        "on-primary-fixed-variant": "#7e2c0e",
+                        "on-tertiary-container": "#002f30",
+                        "error-container": "#93000a",
+                        "tertiary-fixed": "#89f4f4",
+                        "inverse-primary": "#9d4324",
+                        "on-surface": "#e5e2e1",
+                        "on-error": "#690005",
+                        "on-error-container": "#ffdad6",
+                        "primary-container": "#dc7350",
+                        "primary": "#ffb59d",
+                        "secondary-container": "#6a3d2f",
+                        "tertiary-container": "#28a0a1",
+                        "tertiary-fixed-dim": "#6cd7d8",
+                        "surface-tint": "#ffb59d",
+                        "surface-variant": "#353534",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface-dim": "#131313"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #131313;
+            color: #e5e2e1;
+            font-family: 'Inter', sans-serif;
+        }
+        .editorial-header {
+            font-family: 'Manrope', sans-serif;
+        }
+    </style>
+</head>
+<body class="flex min-h-screen">
+<!-- Shared SideNavBar -->
+<aside class="w-[260px] h-screen sticky left-0 top-0 bg-[#1c1b1b] flex flex-col py-8 px-4">
+<!-- Brand Header -->
+<div class="mb-10 px-2">
+<div class="text-xl font-bold tracking-tight text-[#e5e2e1] flex items-center gap-1 after:content-['\u2022'] after:text-[#C96442] editorial-header">
+                Chitragupta
+            </div>
+<div class="text-[10px] uppercase tracking-[0.2em] text-on-surface-variant/60 mt-1 font-label">
+                Academic Curator
+            </div>
+</div>
+<!-- Main Navigation -->
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-3 py-3 rounded-xl text-[#dcc1b8] font-medium hover:bg-[#2a2a2a] transition-colors duration-200 group" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-xl text-[#dcc1b8] font-medium hover:bg-[#2a2a2a] transition-colors duration-200 group" href="#">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+<span class="text-sm">Emails</span>
+</a>
+<!-- Active State for Assignments Page -->
+<a class="flex items-center gap-3 px-3 py-3 rounded-xl text-[#ffb59d] font-bold border-r-2 border-[#ffb59d] bg-[#2a2a2a] transition-colors duration-200 group" href="#">
+<span class="material-symbols-outlined" data-icon="assignment">assignment</span>
+<span class="text-sm">Assignments</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-xl text-[#dcc1b8] font-medium hover:bg-[#2a2a2a] transition-colors duration-200 group" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="text-sm">Attendance</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-xl text-[#dcc1b8] font-medium hover:bg-[#2a2a2a] transition-colors duration-200 group" href="#">
+<span class="material-symbols-outlined" data-icon="event_note">event_note</span>
+<span class="text-sm">Study Plan</span>
+</a>
+</nav>
+<!-- CTA -->
+<button class="mt-4 mx-2 py-3 px-4 rounded-xl bg-gradient-to-br from-primary-container to-primary text-on-primary-fixed text-sm font-bold flex items-center justify-center gap-2 scale-95 active:opacity-80 transition-all">
+<span class="material-symbols-outlined text-[20px]" data-icon="add">add</span>
+            New Research
+        </button>
+<!-- Footer Navigation -->
+<div class="mt-auto pt-6 space-y-1">
+<a class="flex items-center gap-3 px-3 py-3 rounded-xl text-[#dcc1b8] font-medium hover:bg-[#2a2a2a] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+<span class="text-sm">Profile</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-xl text-[#dcc1b8] font-medium hover:bg-[#2a2a2a] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-sm">Settings</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 overflow-y-auto px-12 pt-16 pb-24">
+<!-- Header Section -->
+<header class="max-w-[1200px] mx-auto mb-12 flex justify-between items-end">
+<div>
+<h1 class="text-[3.5rem] font-extrabold editorial-header text-on-surface leading-tight tracking-tight">
+                    Assignments
+                </h1>
+<p class="text-on-surface-variant font-body text-lg mt-2">
+                    Pending coursework from Google Classroom
+                </p>
+</div>
+<button class="flex items-center gap-2 px-6 py-3 rounded-xl border border-outline-variant/15 hover:bg-surface-bright transition-all text-sm font-medium">
+<span class="material-symbols-outlined text-[18px]" data-icon="sync">sync</span>
+                Sync
+            </button>
+</header>
+<!-- Filters Section -->
+<section class="max-w-[1200px] mx-auto mb-10 overflow-x-auto">
+<div class="flex gap-3 pb-2">
+<button class="px-5 py-2 rounded-full bg-primary-container text-on-primary-container text-xs font-bold font-label uppercase tracking-wider">All</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-high border border-outline-variant/10 text-on-surface-variant text-xs font-bold font-label uppercase tracking-wider hover:bg-surface-bright transition-all">Critical</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-high border border-outline-variant/10 text-on-surface-variant text-xs font-bold font-label uppercase tracking-wider hover:bg-surface-bright transition-all">High</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-high border border-outline-variant/10 text-on-surface-variant text-xs font-bold font-label uppercase tracking-wider hover:bg-surface-bright transition-all">Medium</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-high border border-outline-variant/10 text-on-surface-variant text-xs font-bold font-label uppercase tracking-wider hover:bg-surface-bright transition-all">Low</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-high border border-outline-variant/10 text-on-surface-variant text-xs font-bold font-label uppercase tracking-wider hover:bg-surface-bright transition-all">Overdue</button>
+</div>
+</section>
+<!-- Assignments Grid -->
+<section class="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6">
+<!-- Card 1: Overdue -->
+<div class="bg-[#1a1a1a] rounded-2xl border border-[#2e2e2e] border-l-4 border-l-error p-6 flex flex-col gap-6 shadow-warm-ambient hover:bg-[#201f1f] transition-all group">
+<div class="flex justify-between items-start">
+<span class="px-3 py-1 rounded-full bg-surface-container-highest text-[10px] font-bold font-label uppercase tracking-widest text-on-surface-variant">
+                        Advanced Algorithms
+                    </span>
+<span class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-error-container/20 text-error text-[10px] font-bold font-label uppercase tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                        Critical
+                    </span>
+</div>
+<div class="space-y-1">
+<h3 class="text-xl font-bold editorial-header text-on-surface group-hover:text-primary transition-colors">
+                        Complexity Analysis of NP-Hard Systems
+                    </h3>
+<p class="text-[11px] font-label font-medium text-tertiary uppercase tracking-widest">
+                        ASSIGNMENT
+                    </p>
+</div>
+<div class="flex justify-between items-center pt-4 mt-auto">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]" data-icon="calendar_month">calendar_month</span>
+<span class="text-xs font-medium">Oct 24, 2023</span>
+</div>
+<span class="text-xs font-bold text-error uppercase tracking-wider">Overdue</span>
+</div>
+</div>
+<!-- Card 2: Due Today -->
+<div class="bg-[#1a1a1a] rounded-2xl border border-[#2e2e2e] border-l-4 border-l-secondary-container p-6 flex flex-col gap-6 shadow-warm-ambient hover:bg-[#201f1f] transition-all group">
+<div class="flex justify-between items-start">
+<span class="px-3 py-1 rounded-full bg-surface-container-highest text-[10px] font-bold font-label uppercase tracking-widest text-on-surface-variant">
+                        Machine Learning
+                    </span>
+<span class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-secondary-container/20 text-secondary text-[10px] font-bold font-label uppercase tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                        High
+                    </span>
+</div>
+<div class="space-y-1">
+<h3 class="text-xl font-bold editorial-header text-on-surface group-hover:text-primary transition-colors">
+                        Neural Network Hyperparameter Tuning
+                    </h3>
+<p class="text-[11px] font-label font-medium text-tertiary uppercase tracking-widest">
+                        QUIZ
+                    </p>
+</div>
+<div class="flex justify-between items-center pt-4 mt-auto">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]" data-icon="alarm">alarm</span>
+<span class="text-xs font-medium">Today, 11:59 PM</span>
+</div>
+<span class="text-xs font-bold text-secondary uppercase tracking-wider">Due today</span>
+</div>
+</div>
+<!-- Card 3: Medium Priority -->
+<div class="bg-[#1a1a1a] rounded-2xl border border-[#2e2e2e] border-l-4 border-l-tertiary-container p-6 flex flex-col gap-6 shadow-warm-ambient hover:bg-[#201f1f] transition-all group">
+<div class="flex justify-between items-start">
+<span class="px-3 py-1 rounded-full bg-surface-container-highest text-[10px] font-bold font-label uppercase tracking-widest text-on-surface-variant">
+                        Distributed Systems
+                    </span>
+<span class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-tertiary-container/20 text-tertiary text-[10px] font-bold font-label uppercase tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                        Medium
+                    </span>
+</div>
+<div class="space-y-1">
+<h3 class="text-xl font-bold editorial-header text-on-surface group-hover:text-primary transition-colors">
+                        Raft Consensus Implementation Plan
+                    </h3>
+<p class="text-[11px] font-label font-medium text-tertiary uppercase tracking-widest">
+                        ASSIGNMENT
+                    </p>
+</div>
+<div class="flex justify-between items-center pt-4 mt-auto">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]" data-icon="event">event</span>
+<span class="text-xs font-medium">Oct 28, 2023</span>
+</div>
+<span class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Upcoming</span>
+</div>
+</div>
+<!-- Card 4: Low Priority -->
+<div class="bg-[#1a1a1a] rounded-2xl border border-[#2e2e2e] border-l-4 border-l-outline-variant p-6 flex flex-col gap-6 shadow-warm-ambient hover:bg-[#201f1f] transition-all group">
+<div class="flex justify-between items-start">
+<span class="px-3 py-1 rounded-full bg-surface-container-highest text-[10px] font-bold font-label uppercase tracking-widest text-on-surface-variant">
+                        Ethics in AI
+                    </span>
+<span class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-outline-variant/20 text-outline text-[10px] font-bold font-label uppercase tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+                        Low
+                    </span>
+</div>
+<div class="space-y-1">
+<h3 class="text-xl font-bold editorial-header text-on-surface group-hover:text-primary transition-colors">
+                        Bias in Large Language Models Essay
+                    </h3>
+<p class="text-[11px] font-label font-medium text-tertiary uppercase tracking-widest">
+                        ASSIGNMENT
+                    </p>
+</div>
+<div class="flex justify-between items-center pt-4 mt-auto">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]" data-icon="schedule">schedule</span>
+<span class="text-xs font-medium">Nov 02, 2023</span>
+</div>
+<span class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Scheduled</span>
+</div>
+</div>
+<!-- Bento Card: Statistics (Academic Asymmetry) -->
+<div class="lg:col-span-2 grid grid-cols-3 gap-6 mt-6">
+<div class="col-span-2 bg-surface-container-low rounded-2xl p-8 flex flex-col justify-center relative overflow-hidden group">
+<div class="z-10">
+<h4 class="font-label text-[10px] uppercase tracking-widest text-primary mb-4">Productivity Pulse</h4>
+<p class="text-2xl font-bold editorial-header max-w-md">
+                            You've completed <span class="text-primary">85%</span> of your assignments this week. 2 major submissions left.
+                        </p>
+</div>
+<!-- Decorative Graphic -->
+<div class="absolute -right-12 -bottom-12 w-64 h-64 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-all duration-700"></div>
+</div>
+<div class="bg-gradient-to-br from-surface-container to-[#1a1a1a] rounded-2xl p-8 border border-outline-variant/10 flex flex-col items-center justify-center text-center">
+<span class="text-[3.5rem] font-extrabold editorial-header text-on-surface">4</span>
+<span class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant">Days until next exam</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Floating Action Logic suppressed for focused Assignments view -->
+</body></html>

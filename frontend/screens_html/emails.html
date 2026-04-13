@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed-dim": "#ffb59d",
+                    "on-secondary-container": "#e8aa97",
+                    "on-primary-fixed": "#390b00",
+                    "on-tertiary-fixed-variant": "#004f50",
+                    "surface": "#131313",
+                    "on-primary-container": "#521400",
+                    "on-secondary-fixed-variant": "#673b2d",
+                    "on-tertiary": "#003737",
+                    "inverse-on-surface": "#313030",
+                    "inverse-surface": "#e5e2e1",
+                    "on-surface-variant": "#dcc1b8",
+                    "surface-container": "#201f1f",
+                    "background": "#131313",
+                    "tertiary": "#6cd7d8",
+                    "secondary": "#f7b8a4",
+                    "error": "#ffb4ab",
+                    "on-background": "#e5e2e1",
+                    "surface-bright": "#3a3939",
+                    "primary-fixed": "#ffdbd0",
+                    "surface-container-high": "#2a2a2a",
+                    "secondary-fixed-dim": "#f7b8a4",
+                    "outline-variant": "#56423c",
+                    "surface-container-highest": "#353534",
+                    "outline": "#a48b84",
+                    "on-secondary": "#4d2618",
+                    "on-tertiary-fixed": "#002020",
+                    "surface-container-low": "#1c1b1b",
+                    "on-primary": "#5d1800",
+                    "secondary-fixed": "#ffdbd0",
+                    "on-secondary-fixed": "#331106",
+                    "on-primary-fixed-variant": "#7e2c0e",
+                    "on-tertiary-container": "#002f30",
+                    "error-container": "#93000a",
+                    "tertiary-fixed": "#89f4f4",
+                    "inverse-primary": "#9d4324",
+                    "on-surface": "#e5e2e1",
+                    "on-error": "#690005",
+                    "on-error-container": "#ffdad6",
+                    "primary-container": "#dc7350",
+                    "primary": "#ffb59d",
+                    "secondary-container": "#6a3d2f",
+                    "tertiary-container": "#28a0a1",
+                    "tertiary-fixed-dim": "#6cd7d8",
+                    "surface-tint": "#ffb59d",
+                    "surface-variant": "#353534",
+                    "surface-container-lowest": "#0e0e0e",
+                    "surface-dim": "#131313"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #353534; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<div class="flex min-h-screen">
+<!-- SideNavBar (The Anchor) -->
+<aside class="w-[260px] h-screen sticky left-0 top-0 bg-[#1c1b1b] dark:bg-[#1c1b1b] flex flex-col py-8 px-4 z-40">
+<div class="mb-10 px-2">
+<div class="text-xl font-bold tracking-tight text-[#e5e2e1] flex items-center gap-1 after:content-['\u2022'] after:text-[#C96442]">
+                    Chitragupta
+                </div>
+<p class="text-[10px] uppercase tracking-[0.2em] text-on-surface-variant/60 mt-1 font-label">Academic Curator</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#dcc1b8] font-medium hover:bg-[#2a2a2a] transition-colors duration-200 scale-95 active:opacity-80" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#ffb59d] font-bold border-r-2 border-[#ffb59d] bg-[#2a2a2a] transition-colors duration-200 scale-95 active:opacity-80" href="#">
+<span class="material-symbols-outlined">mail</span>
+<span>Emails</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#dcc1b8] font-medium hover:bg-[#2a2a2a] transition-colors duration-200 scale-95 active:opacity-80" href="#">
+<span class="material-symbols-outlined">assignment</span>
+<span>Assignments</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#dcc1b8] font-medium hover:bg-[#2a2a2a] transition-colors duration-200 scale-95 active:opacity-80" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span>Attendance</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#dcc1b8] font-medium hover:bg-[#2a2a2a] transition-colors duration-200 scale-95 active:opacity-80" href="#">
+<span class="material-symbols-outlined">event_note</span>
+<span>Study Plan</span>
+</a>
+</nav>
+<div class="mt-auto space-y-1 pt-6 border-t border-outline-variant/10">
+<button class="w-full mb-6 bg-gradient-to-br from-primary to-primary-container text-on-primary-fixed font-bold py-3 rounded-xl flex items-center justify-center gap-2 shadow-warm-ambient hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add</span>
+                    New Research
+                </button>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#dcc1b8] font-medium hover:bg-[#2a2a2a] transition-colors duration-200 scale-95 active:opacity-80" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span>Profile</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#dcc1b8] font-medium hover:bg-[#2a2a2a] transition-colors duration-200 scale-95 active:opacity-80" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col bg-surface min-w-0">
+<!-- TopNavBar Cluster -->
+<header class="w-full sticky top-0 z-30 bg-[#131313]/80 backdrop-blur-xl flex justify-between items-center px-12 py-6">
+<div class="flex items-center gap-8">
+<div class="relative w-80">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">search</span>
+<input class="w-full bg-surface-container-high border-none rounded-xl pl-12 pr-4 py-2.5 text-sm text-on-surface focus:ring-1 focus:ring-primary/40 placeholder:text-on-surface-variant/50" placeholder="Search archive..." type="text"/>
+</div>
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-[10px] uppercase tracking-wider font-label text-[#dcc1b8] hover:text-[#e5e2e1] transition-all" href="#">Research</a>
+<a class="text-[10px] uppercase tracking-wider font-label text-[#dcc1b8] hover:text-[#e5e2e1] transition-all" href="#">Library</a>
+<a class="text-[10px] uppercase tracking-wider font-label text-[#dcc1b8] hover:text-[#e5e2e1] transition-all" href="#">Archive</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-2 px-4 py-1.5 rounded-lg border border-outline-variant/15 text-[#C96442] hover:bg-surface-bright transition-all">
+<span class="material-symbols-outlined text-sm">sync</span>
+<span class="text-[10px] uppercase tracking-widest font-bold">Sync</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-on-surface">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant/20">
+<img alt="User Academic Profile" class="w-full h-full object-cover" data-alt="Portrait of a scholarly professional with glasses in a dimly lit library setting, soft focus books in background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2O2znS48x7n33HRD3clUQmiAuKXop7b8VQjBSdhWcw2vovVLGcDMZAACdTsIgSECNmeiMhIf82WBUaduax30vF-FDdqHhx6JaDahNRFuMVpbwqUnY_aS-NBA9t5ieZ2hInR2CS1TgD4uwIGpfckycsOjMCoTnU2JFFGxSbtCmCxp4IBBfxrSuR2Xte6YqdLkgv6KKpie-PNieYj00LEMEG1xVKEVkXf0d_NkF_ooG9nqrRpjzS4qOAdhuTN8uuTNmKwrMsrdXjFww"/>
+</div>
+</div>
+</header>
+<!-- Page Canvas -->
+<div class="px-12 py-8 max-w-6xl w-full mx-auto">
+<!-- Inbox Header -->
+<div class="flex justify-between items-end mb-12">
+<div>
+<h1 class="text-5xl font-extrabold font-headline tracking-tighter text-on-surface mb-2">Inbox</h1>
+<p class="text-on-surface-variant text-lg">Your classified university emails</p>
+</div>
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary-fixed px-6 py-3 rounded-xl font-bold flex items-center gap-3 shadow-warm-ambient hover:scale-[0.98] transition-transform">
+<span class="material-symbols-outlined">sync_alt</span>
+                        Sync Emails
+                    </button>
+</div>
+<!-- Filters -->
+<div class="flex items-center gap-3 mb-10 overflow-x-auto pb-2 scrollbar-hide">
+<button class="px-5 py-2 rounded-full bg-primary-container text-on-primary-container font-semibold text-sm flex items-center gap-2">
+                        All <span class="bg-on-primary-container/20 px-2 py-0.5 rounded-full text-xs">128</span>
+</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-high text-on-surface-variant hover:bg-surface-bright transition-colors font-medium text-sm flex items-center gap-2">
+                        Urgent <span class="bg-error/20 text-error px-2 py-0.5 rounded-full text-xs font-bold">4</span>
+</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-high text-on-surface-variant hover:bg-surface-bright transition-colors font-medium text-sm flex items-center gap-2">
+                        Important <span class="bg-tertiary/20 text-tertiary px-2 py-0.5 rounded-full text-xs font-bold">12</span>
+</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-high text-on-surface-variant hover:bg-surface-bright transition-colors font-medium text-sm flex items-center gap-2">
+                        Normal <span class="bg-on-surface-variant/10 px-2 py-0.5 rounded-full text-xs">112</span>
+</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-high text-on-surface-variant hover:bg-surface-bright transition-colors font-medium text-sm flex items-center gap-2">
+                        Spam <span class="bg-on-surface-variant/10 px-2 py-0.5 rounded-full text-xs">0</span>
+</button>
+</div>
+<!-- Email List (Asymmetric Layout/Bento Inspired) -->
+<div class="space-y-4">
+<!-- Urgent Email Card -->
+<div class="group bg-surface-container border-l-4 border-primary rounded-xl p-6 transition-all hover:bg-surface-container-high flex gap-6 relative overflow-hidden">
+<div class="flex-shrink-0 pt-1">
+<div class="w-3 h-3 bg-error rounded-full animate-pulse shadow-[0_0_8px_#ffb4ab]"></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-bold text-on-surface text-lg">Dean's Office</h3>
+<span class="text-xs font-label text-on-surface-variant/60 uppercase tracking-widest">10:24 AM</span>
+</div>
+<p class="font-extrabold text-on-surface text-base mb-1 truncate">Urgent: Thesis Defense Schedule Adjustment</p>
+<p class="text-on-surface-variant line-clamp-2 text-sm leading-relaxed mb-4">Dear Graduate Student, please note that the committee has requested a change in the room allocation for your upcoming defense...</p>
+<div class="flex items-center gap-3">
+<span class="bg-error/10 text-error text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-tighter">URGENT</span>
+<span class="text-[10px] text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">attach_file</span>
+                                    PDF_Schedule.pdf
+                                </span>
+</div>
+</div>
+<div class="opacity-0 group-hover:opacity-100 flex flex-col gap-2 transition-opacity">
+<button class="p-2 bg-surface rounded-lg hover:text-primary transition-colors"><span class="material-symbols-outlined text-xl">archive</span></button>
+<button class="p-2 bg-surface rounded-lg hover:text-error transition-colors"><span class="material-symbols-outlined text-xl">delete</span></button>
+</div>
+</div>
+<!-- Important Email Card -->
+<div class="group bg-surface-container border-l-4 border-tertiary rounded-xl p-6 transition-all hover:bg-surface-container-high flex gap-6 relative overflow-hidden">
+<div class="flex-shrink-0 pt-1">
+<div class="w-3 h-3 bg-tertiary rounded-full shadow-[0_0_8px_#6cd7d8]"></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-bold text-on-surface text-lg">Prof. Alistair Thorne</h3>
+<span class="text-xs font-label text-on-surface-variant/60 uppercase tracking-widest">Yesterday</span>
+</div>
+<p class="font-extrabold text-on-surface text-base mb-1 truncate">Feedback on Research Proposal: Quantum Computing in Vedic Mathematics</p>
+<p class="text-on-surface-variant line-clamp-2 text-sm leading-relaxed mb-4">I've reviewed your latest draft and found the intersectional analysis quite compelling. However, we need to tighten the methodology section...</p>
+<div class="flex items-center gap-3">
+<span class="bg-tertiary/10 text-tertiary text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-tighter">IMPORTANT</span>
+</div>
+</div>
+<div class="opacity-0 group-hover:opacity-100 flex flex-col gap-2 transition-opacity">
+<button class="p-2 bg-surface rounded-lg hover:text-primary transition-colors"><span class="material-symbols-outlined text-xl">star</span></button>
+<button class="p-2 bg-surface rounded-lg hover:text-error transition-colors"><span class="material-symbols-outlined text-xl">delete</span></button>
+</div>
+</div>
+<!-- Normal Email Card (Read) -->
+<div class="group bg-surface-container/40 border-l-4 border-transparent rounded-xl p-6 transition-all hover:bg-surface-container flex gap-6 relative overflow-hidden opacity-80 hover:opacity-100">
+<div class="flex-shrink-0 pt-1">
+<div class="w-3 h-3 bg-on-surface-variant/20 rounded-full"></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-medium text-on-surface-variant text-lg">University Library</h3>
+<span class="text-xs font-label text-on-surface-variant/60 uppercase tracking-widest">Mar 12</span>
+</div>
+<p class="font-medium text-on-surface-variant text-base mb-1 truncate">Reminder: Book Due Date Extension Available</p>
+<p class="text-on-surface-variant/70 line-clamp-1 text-sm leading-relaxed">Your current loans for 'Digital Epistemology' are due in three days. Click here to extend...</p>
+</div>
+</div>
+<!-- Another Important Email Card -->
+<div class="group bg-surface-container border-l-4 border-tertiary rounded-xl p-6 transition-all hover:bg-surface-container-high flex gap-6 relative overflow-hidden">
+<div class="flex-shrink-0 pt-1">
+<div class="w-3 h-3 bg-tertiary rounded-full shadow-[0_0_8px_#6cd7d8]"></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-bold text-on-surface text-lg">Grant Committee</h3>
+<span class="text-xs font-label text-on-surface-variant/60 uppercase tracking-widest">Mar 11</span>
+</div>
+<p class="font-extrabold text-on-surface text-base mb-1 truncate">Academic Excellence Grant: Phase 2 Documentation</p>
+<p class="text-on-surface-variant line-clamp-2 text-sm leading-relaxed mb-4">Congratulations on moving to the second phase of the selection process. We require the following financial transcripts and faculty recommendations...</p>
+<div class="flex items-center gap-3">
+<span class="bg-tertiary/10 text-tertiary text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-tighter">IMPORTANT</span>
+</div>
+</div>
+</div>
+<!-- Spam (Conceptual Inset) -->
+<div class="group bg-surface-container-lowest border-l-4 border-outline-variant/30 rounded-xl p-6 transition-all hover:bg-surface-container flex gap-6 relative overflow-hidden grayscale">
+<div class="flex-shrink-0 pt-1">
+<div class="w-3 h-3 bg-outline-variant rounded-full"></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-medium text-on-surface-variant/50 text-lg">Campus Newsletter</h3>
+<span class="text-xs font-label text-on-surface-variant/40 uppercase tracking-widest">Mar 10</span>
+</div>
+<p class="font-medium text-on-surface-variant/50 text-base mb-1 truncate">Unsubscribe: Weekly Food Truck Schedule</p>
+<p class="text-on-surface-variant/40 line-clamp-1 text-sm leading-relaxed">Check out this week's rotation of local eateries visiting the South Campus plaza...</p>
+<div class="mt-4">
+<span class="bg-surface-container-high text-on-surface-variant/60 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-tighter">SPAM</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Footnote (Academic Annotation Style) -->
+<div class="mt-16 pt-8 border-t border-outline-variant/10">
+<div class="flex items-start gap-4">
+<div class="w-0.5 h-12 bg-tertiary"></div>
+<div>
+<p class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant/60 mb-1">DATA INTEGRITY NOTE</p>
+<p class="text-xs text-on-surface-variant max-w-lg leading-relaxed">Emails are automatically synchronized every 15 minutes. High-priority classifications are determined by the Chitragupta Semantic Engine based on urgency keywords and sender authority scores.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>
