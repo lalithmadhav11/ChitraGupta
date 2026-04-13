@@ -1,10 +1,9 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-
 export async function generateStudyPlan(assignments, attendanceData) {
   try {
-    const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
+    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+ const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash-lite' });
 
     const pendingAssignments = assignments
       .filter(a => a.dueDate !== null && a.daysRemaining !== null)
