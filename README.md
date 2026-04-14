@@ -49,4 +49,4 @@ Your AI-powered academic assistant to streamline student life. Automatically syn
 
 ### Notes
 - Since SWI-Prolog is utilized using child processes, make sure `swipl` commands run globally from your terminal. If missing, a rough JavaScript fallback will take up execution invisibly.
-- **Environment Notes**: As defined in the instructions, tokens are not returned to the frontend. JWT cookies manage active sessions securely.
+-
