@@ -1,6 +1,7 @@
 {
-  "/study-plan/page": "app/study-plan/page.js",
-  "/emails/page": "app/emails/page.js",
   "/dashboard/page": "app/dashboard/page.js",
-  "/assignments/page": "app/assignments/page.js"
+  "/assignments/page": "app/assignments/page.js",
+  "/attendance/page": "app/attendance/page.js",
+  "/study-plan/page": "app/study-plan/page.js",
+  "/emails/page": "app/emails/page.js"
 }
