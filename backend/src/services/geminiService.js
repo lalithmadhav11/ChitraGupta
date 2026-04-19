@@ -76,24 +76,63 @@ Rules:
     const result = await model.generateContent(prompt);
     const text = result.response.text();
     
-    // Strip any markdown code fences
-    const clean = text
+    // Robust JSON extraction
+    const extractedData = extractJSON(text);
+    return extractedData;
+    
+  } catch (error) {
+    console.error('Gemini Service Error:', error.message);
+    throw error;
+  }
+}
+
+/**
+ * Robustly extracts and parses JSON from a string that might contain extra text.
+ */
+function extractJSON(text) {
+  try {
+    // 1. Clean markdown code fences
+    let clean = text
       .replace(/```json\s*/gi, '')
       .replace(/```\s*/gi, '')
       .trim();
-    
-    // Find JSON object in response
-    const jsonStart = clean.indexOf('{');
-    const jsonEnd = clean.lastIndexOf('}');
-    if (jsonStart === -1 || jsonEnd === -1) {
-      throw new Error('No JSON found in Gemini response: ' + clean.substring(0, 100));
+
+    // 2. Try direct parse first
+    try {
+      const parsed = JSON.parse(clean);
+      if (parsed && (parsed.days || parsed.tasks)) return parsed;
+    } catch (e) {
+      // Fall through
     }
-    
-    const jsonStr = clean.substring(jsonStart, jsonEnd + 1);
-    return JSON.parse(jsonStr);
-    
+
+    // 3. Find all valid JSON blocks and pick the best one
+    let start = clean.indexOf('{');
+    const candidates = [];
+
+    while (start !== -1) {
+      let end = clean.lastIndexOf('}');
+      while (end > start) {
+        const candidateStr = clean.substring(start, end + 1);
+        try {
+          const parsed = JSON.parse(candidateStr);
+          candidates.push(parsed);
+          // If we find one with 'days', it's highly likely the correct one
+          if (parsed.days) return parsed;
+        } catch (e) {
+          // Not valid, try smaller
+        }
+        end = clean.lastIndexOf('}', end - 1);
+      }
+      start = clean.indexOf('{', start + 1);
+    }
+
+    // 4. Fallback: return the first candidate found if any
+    if (candidates.length > 0) return candidates[0];
+
+    // 5. If we reach here, extraction failed
+    console.error('Failed to parse Gemini response as JSON. Raw text:', text);
+    throw new Error('No valid study plan JSON found in response');
   } catch (error) {
-    console.error('Gemini error:', error.message);
     throw error;
   }
 }
