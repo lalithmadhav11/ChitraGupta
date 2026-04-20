@@ -2,11 +2,13 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { getEmails, syncEmails } from '../../lib/api';
 import EmailCard from '../../components/EmailCard';
+import ComposeMailModal from '../../components/ComposeMailModal';
 import { useState, useMemo, useEffect } from 'react';
 
 export default function EmailsPage() {
   const queryClient = useQueryClient();
   const [activeFilter, setActiveFilter] = useState('all');
+  const [isComposeOpen, setIsComposeOpen] = useState(false);
 
   const { data: emails, isLoading } = useQuery({
     queryKey: ['emails'],
@@ -117,6 +119,15 @@ export default function EmailsPage() {
             </div>
          </div>
       </div>
+
+      <ComposeMailModal isOpen={isComposeOpen} onClose={() => setIsComposeOpen(false)} />
+
+      <button 
+        onClick={() => setIsComposeOpen(true)}
+        className="fixed bottom-10 right-10 w-16 h-16 rounded-full bg-primary shadow-xl shadow-primary/30 flex items-center justify-center text-onPrimaryFixed hover:scale-105 active:scale-95 transition-all z-40"
+      >
+        <span className="material-symbols-outlined text-3xl">edit_square</span>
+      </button>
     </div>
   );
 }
