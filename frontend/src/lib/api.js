@@ -13,6 +13,7 @@ export const logout = () => api.post('/api/auth/logout').then(r => r.data);
 export const getEmails = () => api.get('/api/emails').then(r => r.data);
 export const getEmailById = (id) => api.get(`/api/emails/${id}`).then(r => r.data);
 export const syncEmails = () => api.post('/api/emails/sync').then(r => r.data);
+export const sendEmail = (data) => api.post('/api/emails/send', data).then(r => r.data);
 export const markEmailRead = (id) => api.patch(`/api/emails/${id}/read`).then(r => r.data);
 export const deleteEmail = (id) => api.delete(`/api/emails/${id}`).then(r => r.data);
 export const archiveEmail = (id) => api.patch(`/api/emails/${id}/archive`).then(r => r.data);
