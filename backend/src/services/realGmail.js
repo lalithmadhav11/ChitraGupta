@@ -32,18 +32,44 @@ export async function fetchRealEmails(accessToken, refreshToken) {
       const msgRes = await gmail.users.messages.get({
         userId: 'me',
         id: msg.id,
-        format: 'metadata',
-        metadataHeaders: ['Subject', 'From', 'Date']
+        format: 'full'
       });
 
-      const headers = msgRes.data.payload.headers;
+      const payload = msgRes.data.payload;
+      const headers = payload.headers;
       const getHeader = (name) => headers.find(h => h.name === name)?.value || '';
+
+      // Body extraction helper
+      const getBody = (payload) => {
+        let body = '';
+        if (payload.parts) {
+          // Look for text/plain first, then text/html
+          const textPart = payload.parts.find(p => p.mimeType === 'text/plain');
+          const htmlPart = payload.parts.find(p => p.mimeType === 'text/html');
+          
+          if (textPart && textPart.body.data) {
+            body = Buffer.from(textPart.body.data, 'base64').toString('utf8');
+          } else if (htmlPart && htmlPart.body.data) {
+            body = Buffer.from(htmlPart.body.data, 'base64').toString('utf8');
+          } else {
+            // Recursive check for nested parts
+            for (const part of payload.parts) {
+              const nestedBody = getBody(part);
+              if (nestedBody) return nestedBody;
+            }
+          }
+        } else if (payload.body && payload.body.data) {
+          body = Buffer.from(payload.body.data, 'base64').toString('utf8');
+        }
+        return body;
+      };
 
       return {
         gmailId: msg.id,
         subject: getHeader('Subject') || '(no subject)',
         sender: getHeader('From'),
         snippet: msgRes.data.snippet,
+        body: getBody(payload),
         date: new Date(getHeader('Date')),
         isRead: !msgRes.data.labelIds?.includes('UNREAD')
       };

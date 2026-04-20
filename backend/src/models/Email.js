@@ -6,7 +6,9 @@ const emailSchema = new mongoose.Schema({
   subject: String,
   sender: String,
   snippet: String,
+  body: String,
   date: Date,
+  isArchived: { type: Boolean, default: false },
   priority: { type: String, enum: ['urgent', 'important', 'normal', 'spam'], default: 'normal' },
   isRead: { type: Boolean, default: false }
 });
