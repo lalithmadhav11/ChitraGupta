@@ -35,10 +35,10 @@ export default function Sidebar() {
       </nav>
 
       <div className="mt-auto px-4 space-y-6">
-        <button className="w-full py-3 px-4 rounded-xl btn-gradient text-sm flex items-center justify-center gap-2 hover:scale-105 active:scale-95 transition-all">
+        {/* <button className="w-full py-3 px-4 rounded-xl btn-gradient text-sm flex items-center justify-center gap-2 hover:scale-105 active:scale-95 transition-all">
           <span className="material-symbols-outlined text-sm" data-icon="add">add</span>
           New Research
-        </button>
+        </button> */}
 
         <div className="pt-6 space-y-2 border-t border-outlineVariant/10">
           <button onClick={logout} className="w-full flex items-center gap-3 py-2 text-onSurfaceVariant font-medium hover:bg-surfaceContainerHigh transition-colors duration-200 rounded-lg px-2">
