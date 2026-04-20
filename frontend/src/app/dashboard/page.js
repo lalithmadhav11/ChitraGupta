@@ -198,10 +198,6 @@ export default function DashboardPage() {
         </section>
       </div>
 
-      {/* FAB for Task/Research */}
-      <button className="fixed bottom-10 right-10 w-16 h-16 rounded-full bg-primary shadow-xl shadow-primary/20 flex items-center justify-center text-onPrimaryFixed hover:scale-105 active:scale-95 transition-all">
-        <span className="material-symbols-outlined text-3xl" data-icon="edit_square">edit_square</span>
-      </button>
     </>
   );
 }
