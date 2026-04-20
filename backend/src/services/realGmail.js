@@ -78,3 +78,35 @@ export async function fetchRealEmails(accessToken, refreshToken) {
 
   return emails;
 }
+
+export async function sendRealEmail(accessToken, refreshToken, { to, subject, body }) {
+  const auth = getOAuthClient(accessToken, refreshToken);
+  const gmail = google.gmail({ version: 'v1', auth });
+
+  const utf8Subject = `=?utf-8?B?${Buffer.from(subject).toString('base64')}?=`;
+  const messageParts = [
+    `To: ${to}`,
+    'Content-Type: text/html; charset=utf-8',
+    'MIME-Version: 1.0',
+    `Subject: ${utf8Subject}`,
+    '',
+    body,
+  ];
+  const message = messageParts.join('\n');
+
+  // The body needs to be base64url encoded.
+  const encodedMessage = Buffer.from(message)
+    .toString('base64')
+    .replace(/\+/g, '-')
+    .replace(/\//g, '_')
+    .replace(/=+$/, '');
+
+  const res = await gmail.users.messages.send({
+    userId: 'me',
+    requestBody: {
+      raw: encodedMessage,
+    },
+  });
+
+  return res.data;
+}
