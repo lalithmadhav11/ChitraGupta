@@ -1,4 +1,5 @@
 'use client';
+import { useEffect } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { getDashboard, syncEmails, syncAssignments } from '../../lib/api';
 
@@ -16,6 +17,11 @@ export default function DashboardPage() {
     },
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ['dashboard'] })
   });
+
+  // Sync on mount
+  useEffect(() => {
+    syncAll.mutate();
+  }, []);
 
   if (isLoading) return (
     <div className="flex items-center justify-center h-full min-h-[400px]">

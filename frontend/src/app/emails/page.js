@@ -2,7 +2,7 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { getEmails, syncEmails } from '../../lib/api';
 import EmailCard from '../../components/EmailCard';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 
 export default function EmailsPage() {
   const queryClient = useQueryClient();
@@ -17,6 +17,10 @@ export default function EmailsPage() {
     mutationFn: syncEmails,
     onSuccess: () => queryClient.invalidateQueries(['emails'])
   });
+
+  useEffect(() => {
+    syncMutation.mutate();
+  }, []);
 
   const counts = useMemo(() => {
     if (!emails) return { all: 0, urgent: 0, important: 0, normal: 0, spam: 0 };

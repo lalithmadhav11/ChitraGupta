@@ -2,7 +2,7 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { getAssignments, syncAssignments } from '../../lib/api';
 import AssignmentCard from '../../components/AssignmentCard';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 
 export default function AssignmentsPage() {
   const queryClient = useQueryClient();
@@ -17,6 +17,10 @@ export default function AssignmentsPage() {
     mutationFn: syncAssignments,
     onSuccess: () => queryClient.invalidateQueries(['assignments'])
   });
+
+  useEffect(() => {
+    syncMutation.mutate();
+  }, []);
 
   const displayedAssignments = useMemo(() => {
     if (!assignments) return [];
