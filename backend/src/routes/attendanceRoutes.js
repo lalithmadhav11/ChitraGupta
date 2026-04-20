@@ -8,16 +8,21 @@ const router = express.Router();
 router.post('/log', protect, async (req, res) => {
   try {
     const { subject, attended, total } = req.body;
+    console.log(`Attendance Log Attempt - Subject: ${subject}, Attended: ${attended}, Total: ${total}`);
     
     if (!subject || attended === undefined || total === undefined) {
+      console.log('Validation Failed: Missing required fields');
       return res.status(400).json({ error: 'Missing required fields' });
     }
 
     const att = Number(attended);
     const tot = Number(total);
 
-    if (tot <= 0 || att > tot || att < 0) {
-      return res.status(400).json({ error: 'Invalid attendance numbers' });
+    if (isNaN(att) || isNaN(tot) || tot <= 0 || att > tot || att < 0) {
+      console.log(`Validation Failed: Invalid numbers - Attended: ${attended} (${att}), Total: ${total} (${tot})`);
+      return res.status(400).json({ 
+        error: isNaN(att) || isNaN(tot) ? 'Attendance and Total must be numbers' : 'Invalid attendance numbers' 
+      });
     }
 
     const percentage = (att / tot) * 100;

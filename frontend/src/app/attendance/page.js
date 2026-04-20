@@ -15,6 +15,8 @@ export default function AttendancePage() {
     queryFn: getAttendance
   });
 
+  const [error, setError] = useState('');
+  
   const logMutation = useMutation({
     mutationFn: logAttendance,
     onSuccess: () => {
@@ -22,13 +24,31 @@ export default function AttendancePage() {
       setSubject('');
       setAttended('');
       setTotal('');
+      setError('');
+    },
+    onError: (err) => {
+      setError(err.response?.data?.error || 'Failed to save attendance');
     }
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!subject || !attended || !total) return;
-    logMutation.mutate({ subject, attended: Number(attended), total: Number(total) });
+    setError('');
+    
+    const att = Number(attended);
+    const tot = Number(total);
+
+    if (!subject || isNaN(att) || isNaN(tot)) {
+      setError('Please fill in all fields with valid numbers');
+      return;
+    }
+
+    if (att > tot) {
+      setError('Attended classes cannot exceed total classes');
+      return;
+    }
+
+    logMutation.mutate({ subject, attended: att, total: tot });
   };
 
   const stats = useMemo(() => {
@@ -102,6 +122,14 @@ export default function AttendancePage() {
                   />
                 </div>
               </div>
+
+              {error && (
+                <div className="bg-errorContainer/20 border border-error/20 rounded-xl p-4 flex items-center gap-3 animate-fade-in">
+                  <span className="material-symbols-outlined text-error text-[20px]" data-icon="error">error</span>
+                  <p className="text-xs font-bold text-error font-inter leading-tight">{error}</p>
+                </div>
+              )}
+
               <div className="pt-4">
                 <button 
                   type="submit"
