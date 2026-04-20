@@ -1,11 +1,24 @@
 'use client';
+import { useRouter } from 'next/navigation';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { markEmailRead } from '../lib/api';
+import { markEmailRead, archiveEmail, deleteEmail } from '../lib/api';
 
 export default function EmailCard({ email }) {
   const queryClient = useQueryClient();
+  const router = useRouter();
+  
   const markReadMutation = useMutation({
     mutationFn: (id) => markEmailRead(id),
+    onSuccess: () => queryClient.invalidateQueries(['emails'])
+  });
+
+  const archiveMutation = useMutation({
+    mutationFn: (id) => archiveEmail(id),
+    onSuccess: () => queryClient.invalidateQueries(['emails'])
+  });
+
+  const deleteMutation = useMutation({
+    mutationFn: (id) => deleteEmail(id),
     onSuccess: () => queryClient.invalidateQueries(['emails'])
   });
 
@@ -50,6 +63,7 @@ export default function EmailCard({ email }) {
       className={`group ${style.card} rounded-xl p-6 transition-all flex gap-6 relative overflow-hidden cursor-pointer`}
       onClick={() => {
         if (!email.isRead) markReadMutation.mutate(email._id);
+        router.push(`/emails/${email._id}`);
       }}
     >
       <div className="flex-shrink-0 pt-1">
@@ -79,11 +93,25 @@ export default function EmailCard({ email }) {
         )}
       </div>
 
-      <div className="opacity-0 group-hover:opacity-100 flex flex-col gap-2 transition-opacity place-self-start">
-         <button className="p-2 bg-surface rounded-lg hover:text-primary transition-colors flex items-center justify-center">
+      <div className="opacity-0 group-hover:opacity-100 flex flex-col gap-2 transition-opacity place-self-start z-20">
+         <button 
+           onClick={(e) => {
+             e.stopPropagation();
+             archiveMutation.mutate(email._id);
+           }}
+           disabled={archiveMutation.isPending}
+           className="p-2 bg-surface rounded-lg hover:text-primary transition-colors flex items-center justify-center disabled:opacity-50"
+         >
             <span className="material-symbols-outlined text-xl">archive</span>
          </button>
-         <button className="p-2 bg-surface rounded-lg hover:text-error transition-colors flex items-center justify-center">
+         <button 
+           onClick={(e) => {
+             e.stopPropagation();
+             deleteMutation.mutate(email._id);
+           }}
+           disabled={deleteMutation.isPending}
+           className="p-2 bg-surface rounded-lg hover:text-error transition-colors flex items-center justify-center disabled:opacity-50"
+         >
             <span className="material-symbols-outlined text-xl">delete</span>
          </button>
       </div>
