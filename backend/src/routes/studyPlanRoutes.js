@@ -11,8 +11,10 @@ router.post('/generate', protect, async (req, res) => {
   try {
     const userId = req.user._id;
     
-    const assignments = await Assignment.find({ userId });
-    const attendanceData = await Attendance.find({ userId });
+    const [assignments, attendanceData] = await Promise.all([
+      Assignment.find({ userId }),
+      Attendance.find({ userId })
+    ]);
     
     console.log(`Generating study plan for user ${userId}`);
     console.log(`Assignments: ${assignments.length}, Attendance: ${attendanceData.length}`);
