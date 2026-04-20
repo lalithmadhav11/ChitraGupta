@@ -1,6 +1,6 @@
 import express from 'express';
 import { protect } from '../middleware/auth.js';
-import { fetchRealEmails } from '../services/realGmail.js';
+import { fetchRealEmails, sendRealEmail } from '../services/realGmail.js';
 import { classifyEmail } from '../services/prologService.js';
 import Email from '../models/Email.js';
 import User from '../models/User.js';
@@ -105,6 +105,22 @@ router.patch('/:id/read', protect, async (req, res) => {
       return res.status(404).json({ error: 'Email not found' });
     }
     res.json(email);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+router.post('/send', protect, async (req, res) => {
+  try {
+    const { to, subject, body } = req.body;
+    const user = await User.findById(req.user._id);
+    
+    if (!user.accessToken) {
+      return res.status(400).json({ error: 'Google Access Token missing.' });
+    }
+
+    const result = await sendRealEmail(user.accessToken, user.refreshToken, { to, subject, body });
+    res.json({ message: 'Email sent successfully', result });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
