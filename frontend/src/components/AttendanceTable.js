@@ -48,12 +48,12 @@ export default function AttendanceTable({ attendance }) {
       <div className="p-6 border-b border-outlineVariant/5 flex justify-between items-center">
         <h3 className="text-lg font-bold font-manrope text-onSurface">Attendance Summary</h3>
         <div className="flex gap-2">
-          <button className="p-2 rounded-lg bg-surfaceContainerHigh text-onSurfaceVariant hover:text-onSurface transition-colors">
+          {/* <button className="p-2 rounded-lg bg-surfaceContainerHigh text-onSurfaceVariant hover:text-onSurface transition-colors">
             <span className="material-symbols-outlined text-[20px]" data-icon="filter_list">filter_list</span>
           </button>
           <button className="p-2 rounded-lg bg-surfaceContainerHigh text-onSurfaceVariant hover:text-onSurface transition-colors">
             <span className="material-symbols-outlined text-[20px]" data-icon="download">download</span>
-          </button>
+          </button> */}
         </div>
       </div>
       <div className="overflow-x-auto">
